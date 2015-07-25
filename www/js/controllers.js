@@ -1,28 +1,117 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+//Controlador de las tareas del dia de hoy
+.controller('TodayCtrl', [
+  '$scope',
+  function($scope) {
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+    $scope.todos = getTodos();
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
-})
+    function getTodos(){
+      return [
+        {
+          id: 1,
+          name: 'Hacer las compras',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis nesciunt repellendus deserunt pariatur quidem ab nobis, obcaecati ratione eos cumque et unde quam doloribus consectetur reprehenderit! Tenetur maxime voluptates molestiae?',
+          date: new Date(),
+          done: true
+        },
+        {
+          id: 2,
+          name: 'Leer una novela',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis nesciunt repellendus deserunt pariatur quidem ab nobis, obcaecati ratione eos cumque et unde quam doloribus consectetur reprehenderit! Tenetur maxime voluptates molestiae?',
+          date: new Date(),
+          done: false
+        },
+         {
+          id: 3,
+          name: 'Comprar comida',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis nesciunt repellendus deserunt pariatur quidem ab nobis, obcaecati ratione eos cumque et unde quam doloribus consectetur reprehenderit! Tenetur maxime voluptates molestiae?',
+          date: new Date(),
+          done: true
+        },
+        {
+          id: 4,
+          name: 'Ir a meetup',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis nesciunt repellendus deserunt pariatur quidem ab nobis, obcaecati ratione eos cumque et unde quam doloribus consectetur reprehenderit! Tenetur maxime voluptates molestiae?',
+          date: new Date(),
+          done: true
+        },
+        {
+          id: 5,
+          name: 'Sacar a la mascota',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis nesciunt repellendus deserunt pariatur quidem ab nobis, obcaecati ratione eos cumque et unde quam doloribus consectetur reprehenderit! Tenetur maxime voluptates molestiae?',
+          date: new Date(),
+          done: false
+        },
+      ];
+    }
+  }
+])
+.controller('AllCtrl', [
+  '$scope',
+  function($scope) {
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
+    $scope.todos = getTodos();
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
-});
+    function getTodos(){
+      return [
+        {
+          id: 1,
+          name: 'Comprar comida',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis nesciunt repellendus deserunt pariatur quidem ab nobis, obcaecati ratione eos cumque et unde quam doloribus consectetur reprehenderit! Tenetur maxime voluptates molestiae?',
+          date: new Date(),
+          done: true
+        },
+        {
+          id: 2,
+          name: 'Ir a meetup',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis nesciunt repellendus deserunt pariatur quidem ab nobis, obcaecati ratione eos cumque et unde quam doloribus consectetur reprehenderit! Tenetur maxime voluptates molestiae?',
+          date: new Date(),
+          done: true
+        },
+        {
+          id: 3,
+          name: 'Sacar a la mascota',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis nesciunt repellendus deserunt pariatur quidem ab nobis, obcaecati ratione eos cumque et unde quam doloribus consectetur reprehenderit! Tenetur maxime voluptates molestiae?',
+          date: new Date(),
+          done: false
+        },
+      ];
+    }
+  }
+])
+.controller('DoneCtrl', [
+  '$scope',
+  function($scope) {
+
+    $scope.todos = getTodos();
+
+    function getTodos(){
+      return [
+        {
+          id: 1,
+          name: 'Comprar comida',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis nesciunt repellendus deserunt pariatur quidem ab nobis, obcaecati ratione eos cumque et unde quam doloribus consectetur reprehenderit! Tenetur maxime voluptates molestiae?',
+          date: new Date(),
+          done: true
+        },
+        {
+          id: 2,
+          name: 'Ir a meetup',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis nesciunt repellendus deserunt pariatur quidem ab nobis, obcaecati ratione eos cumque et unde quam doloribus consectetur reprehenderit! Tenetur maxime voluptates molestiae?',
+          date: new Date(),
+          done: true
+        },
+        {
+          id: 3,
+          name: 'Sacar a la mascota',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis nesciunt repellendus deserunt pariatur quidem ab nobis, obcaecati ratione eos cumque et unde quam doloribus consectetur reprehenderit! Tenetur maxime voluptates molestiae?',
+          date: new Date(),
+          done: false
+        },
+      ];
+    }
+  }
+])
+

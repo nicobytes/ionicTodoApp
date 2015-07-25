@@ -1,0 +1,12 @@
+<ion-view view-title="Todas las tareas">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="todo in todos | orderBy:'date' " class="item-icon-left my-todo">
+        <i class="icon ion-checkmark" ng-class="{'done': todo.done}"></i>
+        <h2>{{todo.name}}</h2>
+        <p>{{todo.text}}</p>
+        <span class="time">{{ todo.date | date: 'short' }}</span>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
