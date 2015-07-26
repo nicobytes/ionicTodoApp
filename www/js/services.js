@@ -27,6 +27,27 @@ angular.module('starter.services', [])
       todos.splice(index, 1);
       this.save(todos);
       return todos;
+    },
+    groupByDate: function(){
+      var todos = this.query().map(function(item){
+        var date = new Date(item.date);
+        item.shortDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+        return item;
+      });
+      return _.map(_.groupBy(todos, 'shortDate'), function(item, i){
+        return {
+          date: new Date(i),
+          todos: item
+        };
+      });
+    },
+    saveDates: function(dates){
+      var todos = dates.map(function(item){
+        return item.todos;
+      }).reduce(function(a,b){
+        return a.concat(b);
+      }, []);
+      this.save(todos);
     }
   };
 });

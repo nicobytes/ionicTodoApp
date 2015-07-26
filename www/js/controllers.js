@@ -8,7 +8,7 @@ angular.module('starter.controllers', [])
     $scope.todo = {};
     $scope.todo.date = new Date();
     //La lista
-    $scope.todos = todoStorage.query();
+    $scope.todos = filterToday(todoStorage.query());
     //para editar o crear
     $scope.is_new = true;
 
@@ -26,6 +26,7 @@ angular.module('starter.controllers', [])
     $scope.closeModal = function() {
       $scope.modal.hide();
       $scope.todo = {};
+      $scope.todo.date = new Date();
       $scope.is_new = true;
     };
 
@@ -41,12 +42,12 @@ angular.module('starter.controllers', [])
     }
 
     $scope.addTodo = function(){
-      $scope.todos = todoStorage.addTodo($scope.todo);
+      $scope.todos = filterToday(todoStorage.addTodo($scope.todo));
       $scope.closeModal();
     }
 
     $scope.deleteTodo = function(){
-      $scope.todos = todoStorage.deleteTodo($scope.todo);
+      $scope.todos = filterToday(todoStorage.deleteTodo($scope.todo));
       $scope.closeModal();
     }
 
@@ -62,6 +63,16 @@ angular.module('starter.controllers', [])
         $scope.updateTodo();
       }
     }
+
+    function filterToday(todos){
+      var today = new Date();
+      return todos.filter(function(item){
+        var date = new Date(item.date);
+        return (date.getFullYear() == today.getFullYear()) &&
+               (date.getMonth() == today.getMonth()) &&
+              (date.getDate() == today.getDate());
+      });
+    }
   }
 ])
 .controller('AllCtrl', [
@@ -71,7 +82,7 @@ angular.module('starter.controllers', [])
     $scope.todo = {};
     $scope.todo.date = new Date();
     //La lista
-    $scope.todos = todoStorage.query();
+    $scope.dates = todoStorage.groupByDate();
     //para editar o crear
     $scope.is_new = true;
 
@@ -89,6 +100,7 @@ angular.module('starter.controllers', [])
     $scope.closeModal = function() {
       $scope.modal.hide();
       $scope.todo = {};
+      $scope.todo.date = new Date();
       $scope.is_new = true;
     };
 
@@ -104,17 +116,19 @@ angular.module('starter.controllers', [])
     }
 
     $scope.addTodo = function(){
-      $scope.todos = todoStorage.addTodo($scope.todo);
+      todoStorage.addTodo($scope.todo);
+      $scope.dates = todoStorage.groupByDate();
       $scope.closeModal();
     }
 
     $scope.deleteTodo = function(){
-      $scope.todos = todoStorage.deleteTodo($scope.todo);
+      todoStorage.deleteTodo($scope.todo);
+      $scope.dates = todoStorage.groupByDate();
       $scope.closeModal();
     }
 
     $scope.updateTodo = function(){
-      todoStorage.save($scope.todos);
+      todoStorage.saveDates($scope.dates);
       $scope.closeModal();
     }
 
@@ -133,7 +147,7 @@ angular.module('starter.controllers', [])
     //El objeto
     $scope.todo = {};
     //La lista
-    $scope.todos = todoStorage.query();
+    $scope.dates = todoStorage.groupByDate();
     //para editar o crear
     $scope.is_new = true;
 
@@ -151,6 +165,7 @@ angular.module('starter.controllers', [])
     $scope.closeModal = function() {
       $scope.modal.hide();
       $scope.todo = {};
+      $scope.todo.date = new Date();
       $scope.is_new = true;
     };
 
@@ -166,17 +181,19 @@ angular.module('starter.controllers', [])
     }
 
     $scope.addTodo = function(){
-      $scope.todos = todoStorage.addTodo($scope.todo);
+      todoStorage.addTodo($scope.todo);
+      $scope.dates = todoStorage.groupByDate();
       $scope.closeModal();
     }
 
     $scope.deleteTodo = function(){
-      $scope.todos = todoStorage.deleteTodo($scope.todo);
+      todoStorage.deleteTodo($scope.todo);
+      $scope.dates = todoStorage.groupByDate();
       $scope.closeModal();
     }
 
     $scope.updateTodo = function(){
-      todoStorage.save($scope.todos);
+      todoStorage.saveDates($scope.dates);
       $scope.closeModal();
     }
 
