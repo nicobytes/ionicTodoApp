@@ -51,7 +51,7 @@ angular.module('starter.controllers', [])
 
     $scope.deleteTodo = function(){
       var index = $scope.todos.indexOf($scope.todo);
-      $scope.items.splice(index, 1);
+      $scope.todos.splice(index, 1);
       $scope.closeModal();
     }
 
@@ -149,7 +149,7 @@ angular.module('starter.controllers', [])
 
     $scope.deleteTodo = function(){
       var index = $scope.todos.indexOf($scope.todo);
-      $scope.items.splice(index, 1);
+      $scope.todos.splice(index, 1);
       $scope.closeModal();
     }
 
@@ -235,7 +235,7 @@ angular.module('starter.controllers', [])
 
     $scope.deleteTodo = function(){
       var index = $scope.todos.indexOf($scope.todo);
-      $scope.items.splice(index, 1);
+      $scope.todos.splice(index, 1);
       $scope.closeModal();
     }
 
