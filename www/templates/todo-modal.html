@@ -1,0 +1,33 @@
+<ion-modal-view>
+  <ion-header-bar>
+	 	<h1 class="title">Tarea</h1>
+	  <button class="button" ng-click="closeModal()">Cerrar</button>
+  </ion-header-bar>
+  <ion-content>
+		<form name="FormTodo" novalidate ng-submit="saveTodo()">
+	  	<div class="list">
+	      <label class="item item-input item-stacked-label">
+	        <span class="input-label">Nombre:</span>
+	        <input type="text" ng-model="todo.name" required>
+	      </label>
+	      <label class="item item-input item-stacked-label">
+	        <span class="input-label">Descripcion:</span>
+	        <textarea rows="5" ng-model="todo.text" required></textarea>
+	      </label>
+	      <label class="item item-input item-stacked-label">
+	        <span class="input-label">Fecha:</span>
+	        <input type="datetime-local" ng-model="todo.date" required>
+	      </label>
+	      <ion-toggle ng-model="todo.done" toggle-class="toggle-balanced">¿Hecho?</ion-toggle>
+	    </div>
+	    <div class="row">
+	      <div class="col">
+	        <button type="button" ng-show="!is_new" class="button button-block button-assertive" ng-click="deleteTodo()">Eliminar</button>
+	      </div>
+	      <div class="col">
+	        <button type="submit" class="button button-block button-balanced" ng-disabled="FormTodo.$invalid">Guardar</button>
+	      </div>
+	   </div>
+		</form>
+  </ion-content>
+</ion-modal-view>
