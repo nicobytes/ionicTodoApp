@@ -1,9 +1,7 @@
-<ion-view view-title="Hecho">
-  <ion-nav-buttons side="right">
-    <button class="button" ng-click="newTodo()">Nueva</button>
-  </ion-nav-buttons>
+<ion-view view-title="Hecho" cache-view="false">
   <ion-content>
   	<ion-list>
+      <ion-item ng-show="todos.length == 0">No hay Registros</ion-item>
       <ion-item ng-repeat="todo in todos | orderBy:'date' | filter:{done: true}  " class="item-icon-left my-todo" ng-click="editTodo(todo)">
         <i class="icon ion-checkmark" ng-class="{'done': todo.done}"></i>
         <h2>{{todo.name}}</h2>
