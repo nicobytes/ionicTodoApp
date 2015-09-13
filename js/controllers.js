@@ -2,10 +2,62 @@ angular.module('starter.controllers', [])
 
 //Controlador de las tareas del dia de hoy
 .controller('TodayCtrl', [
-  '$scope',
-  function($scope) {
+  '$scope', '$ionicModal',
+  function($scope, $ionicModal) {
 
+    $scope.todo = {};
     $scope.todos = getTodos();
+    $scope.is_new = true;
+
+    $ionicModal.fromTemplateUrl('templates/todo-modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal = modal;
+    });
+
+    $scope.newTodo = function(){
+      $scope.is_new = true;
+      $scope.openModal();
+    }
+
+    $scope.editTodo = function(todo){
+      $scope.is_new = false;
+      $scope.todo = todo;
+      $scope.openModal();
+    }
+
+    $scope.addTodo = function(){
+      $scope.todos.push($scope.todo);
+      $scope.closeModal();
+    }
+
+    $scope.deleteTodo = function(){
+      var index = $scope.todos.indexOf($scope.todo);
+      $scope.todos.splice(index,1);
+      $scope.closeModal();
+    }
+
+    $scope.updateTodo = function(){
+      $scope.closeModal();
+    }
+
+    $scope.saveTodo = function(){
+      if($scope.is_new){
+        $scope.addTodo();
+      }else{
+        $scope.updateTodo();
+      }
+    }
+
+    $scope.openModal = function() {
+      $scope.modal.show();
+    };
+
+    $scope.closeModal = function() {
+      $scope.modal.hide();
+      $scope.todo = {};
+    };
 
     function getTodos(){
       return [
