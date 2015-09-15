@@ -1,10 +1,13 @@
 <ion-view view-title="Todas las tareas">
+  <ion-nav-buttons side="right">
+    <button class="button" ng-click="newTodo()">Nueva</button>
+  </ion-nav-buttons>
   <ion-content>
     <ion-list ng-repeat="date in dates | orderBy:'date' ">
       <ion-item class="item-divider">
         {{ date.date | date: 'fullDate' }}
       </ion-item>
-      <ion-item ng-repeat="todo in date.todos | orderBy:'date' " class="item-icon-left my-todo">
+      <ion-item ng-repeat="todo in date.todos | orderBy:'date' " class="item-icon-left my-todo" ng-click="editTodo(todo)">
         <i class="icon ion-checkmark" ng-class="{'done': todo.done}"></i>
         <h2>{{todo.title}}</h2>
         <p>{{todo.description}}</p>
