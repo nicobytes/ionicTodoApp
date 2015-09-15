@@ -1,0 +1,19 @@
+<!--
+Create tabs with an icon and label, using the tabs-positive style.
+Each tab's child <ion-nav-view> directive will have its own
+navigation history that also transitions its views in and out.
+-->
+<ion-tabs class="tabs-icon-top tabs-color-active-positive">
+  <!-- Tab tareas de la fecha -->
+  <ion-tab title="Para hoy" icon="ion-clock" href="#/tab/today">
+    <ion-nav-view name="tab-today"></ion-nav-view>
+  </ion-tab>
+  <!-- Tab Todas las tareas -->
+  <ion-tab title="Todo" icon="ion-clipboard" href="#/tab/all">
+    <ion-nav-view name="tab-all"></ion-nav-view>
+  </ion-tab>
+  <!-- Tab tareas hechas -->
+  <ion-tab title="Hecho" icon="ion-checkmark" href="#/tab/done">
+    <ion-nav-view name="tab-done"></ion-nav-view>
+  </ion-tab>
+</ion-tabs>

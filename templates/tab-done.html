@@ -1,0 +1,15 @@
+<ion-view view-title="Hecho">
+  <ion-content>
+  	<ion-list ng-repeat="date in dates | orderBy:'date' ">
+      <ion-item class="item-divider">
+        {{ date.date | date: 'fullDate' }}
+      </ion-item>
+      <ion-item ng-repeat="todo in date.todos | filter: {done: true} |orderBy:'date' " class="item-icon-left my-todo">
+        <i class="icon ion-checkmark" ng-class="{'done': todo.done}"></i>
+        <h2>{{todo.title}}</h2>
+        <p>{{todo.description}}</p>
+        <span class="time">{{ todo.date | date: 'shortTime' }}</span>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
