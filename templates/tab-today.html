@@ -1,0 +1,15 @@
+<ion-view view-title="Para hoy">
+  <ion-nav-buttons side="right">
+    <button class="button" ng-click="newTodo()">Nueva</button>
+  </ion-nav-buttons>
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="todo in todos | orderBy:'date' " class="item-icon-left my-todo" ng-click="editTodo(todo)">
+        <i class="icon ion-checkmark" ng-class="{'done': todo.done}"></i>
+        <h2>{{todo.title}}</h2>
+        <p>{{todo.description}}</p>
+        <span class="time">{{ todo.date | date: 'shortTime' }}</span>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
