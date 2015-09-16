@@ -1,5 +1,4 @@
 angular.module('starter.services', [])
-
 .factory('TodoFirebase',[
   '$firebaseArray','$firebaseObject',
   function($firebaseArray, $firebaseObject) {
@@ -65,4 +64,3 @@ angular.module('starter.services', [])
     },
   };
 });
-
